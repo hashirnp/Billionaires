@@ -91,7 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   dummyList.addAll(state.response);
                   return ListView.separated(
                     //asdasd
-                    physics: const ClampingScrollPhysics(), //sasdasd
+                    physics: const ClampingScrollPhysics(),
+                    //hashir
                     itemBuilder: (ctx, i) {
                       final item = state.response[i];
                       return ListItemWidget(item);
