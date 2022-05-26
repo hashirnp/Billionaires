@@ -1,19 +1,18 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:company_profit_bloc/domain/User/Model/user_response/financial_asset.dart';
 import 'package:company_profit_bloc/domain/User/Model/user_response/user_response.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../domain/core/shared_preferences/DarkThemeProvider.dart';
 import 'widgets/section1.dart';
 import 'widgets/text_widget.dart';
-import 'dart:io';
-import 'package:http/http.dart' as http;
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 
 class DetailScreen extends StatelessWidget {
   final UserResponse list;
@@ -207,7 +206,7 @@ class _FinancialAssetsWidgetState extends State<FinancialAssetsWidget> {
               ),
               Text(
                 item.sharePrice != null
-                    ? "Share Price : " + item.sharePrice!.toString()
+                    ? "Share Price : " +( item.sharePrice!*item.exchangeRate!).toString()
                     : '',
                 style: TextStyle(
                   color: themeChange.darkTheme ? Colors.white : Colors.black,
@@ -221,14 +220,14 @@ class _FinancialAssetsWidgetState extends State<FinancialAssetsWidget> {
                   color: themeChange.darkTheme ? Colors.white : Colors.black,
                 ),
               ),
-              Text(
-                item.exchangeRate != null
-                    ? "Exchange Rate : " + item.exchangeRate!.toString()
-                    : '',
-                style: TextStyle(
-                  color: themeChange.darkTheme ? Colors.white : Colors.black,
-                ),
-              ),
+              // Text(
+              //   item.exchangeRate != null
+              //       ? "Exchange Rate : " + item.exchangeRate!.toString()
+              //       : '',
+              //   style: TextStyle(
+              //     color: themeChange.darkTheme ? Colors.white : Colors.black,
+              //   ),
+              // ),
               Text(
                 item.interactive != null
                     ? "Interactive : " + item.interactive!.toString()
