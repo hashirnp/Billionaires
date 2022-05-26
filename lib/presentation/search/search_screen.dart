@@ -24,6 +24,7 @@ class SearchScreen extends StatelessWidget {
 
     list.clear();
     list.addAll(BlocProvider.of<UserBloc>(context).state.response);
+    SearchData().refreshUI(list: userNotifier.value, query: "");
 
     return Scaffold(
       appBar: AppBar(
@@ -32,17 +33,17 @@ class SearchScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         onChanged: (val) {
           _debouncer.run(() {
-            // searchData(query: val, list: list);
             SearchData().refreshUI(list: list, query: val);
-            print(SearchData().searchNotifier.value.length.toString());
+            
           });
         },
       )),
       body: SafeArea(
           child: ValueListenableBuilder(
               valueListenable: SearchData.instance.searchNotifier,
-              builder: (ctx,List<UserResponse> list, _) {
-                return ListView.separated(
+              builder: (ctx, List<UserResponse> list, _) {
+                if (list.isNotEmpty) {
+                  return ListView.separated(
                     physics: const ClampingScrollPhysics(),
                     itemBuilder: (ctx, i) {
                       final item = list[i];
@@ -54,6 +55,13 @@ class SearchScreen extends StatelessWidget {
                     itemCount: list.length,
                     shrinkWrap: true,
                   );
+                }
+                return const Center(
+                  child: Text(
+                    "No data available ",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                );
               })),
     );
   }

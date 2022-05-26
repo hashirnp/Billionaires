@@ -34,11 +34,12 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: 8.0.1
+  flutter_spinkit: ^5.1.0
   freezed_annotation: 1.1.0
   get_it: 7.2.0
   getwidget: ^2.0.5
   google_fonts: ^2.3.2
-  google_mobile_ads: ^1.2.0   
+  google_mobile_ads: ^1.2.0
   injectable: 1.5.3
   intl: 0.17.0
   json_annotation: 4.4.0

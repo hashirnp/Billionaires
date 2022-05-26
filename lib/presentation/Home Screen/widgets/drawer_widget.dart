@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mailto/mailto.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -21,59 +21,51 @@ class DrawerWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              height: 200,
-              color: Colors.blueAccent,
-              child: const Center(
-                child: Text(
-                  'This app created by Hashir Np',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white),
-                ),
+            UserAccountsDrawerHeader(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                Color(0xff264d91),
+                Color.fromARGB(255, 88, 140, 232),
+              ])),
+              accountName: Text("Billionaires",
+                  style: GoogleFonts.sahitya(
+                      textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600))),
+              accountEmail: const Text(
+                "",
+                style: TextStyle(color: Colors.white),
+              ),
+              currentAccountPicture: const CircleAvatar(
+                child: Text("\$",
+                    style: TextStyle(color: Colors.white, fontSize: 30)),
+                backgroundColor: Color.fromARGB(41, 79, 145, 255),
+                //backgroundImage: AssetImage('assets/images/logo.png'),
               ),
             ),
-            const SizedBox(
-              height: 10,
+           
+            ListTile(
+              leading:const Icon(Icons.home),
+              title:const  Text("All Billionaires"),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                    onTap: () async {
-                      final Uri url = Uri.parse(
-                          'https://play.google.com/store/apps/dev?id=8340046743059560670&hl=en&gl=US');
-
-                      if (!await launchUrl(
-                        url,
-                        mode: LaunchMode.externalApplication,
-                      )) {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                    child: Image.asset(
-                      'assets/images/playstore.webp',
-                      height: 40,
-                      width: 40,
-                    )),
-                GestureDetector(
-                    onTap: () async {
-                      final mailtoLink = Mailto(
-                        to: ['binaryarchitectbusiness@gmail.com'],
-                        //cc: ['cc1@example.com', 'cc2@example.com'],
-                        subject: 'Hai',
-                        body: 'I would like to contact you for ....',
-                      );
-                      await launchUrlString('$mailtoLink');
-                    },
-                    child: Image.asset(
-                      'assets/images/gmail.png',
-                      height: 40,
-                      width: 40,
-                    )),
-              ],
-            )
+            ListTile(
+              leading:const  Icon(Icons.filter),
+              title: const Text("Filter by"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading:const  Icon(Icons.business),
+              title:const  Text("Industry"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
           ]),
     ));
   }

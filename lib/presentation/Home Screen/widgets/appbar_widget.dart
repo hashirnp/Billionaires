@@ -1,3 +1,4 @@
+import 'package:company_profit_bloc/application/user/user_bloc.dart';
 import 'package:company_profit_bloc/presentation/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:launch_review/launch_review.dart';
@@ -8,8 +9,10 @@ AppBar appBarWidget(
   return AppBar(title: const Text('Billionaires'), actions: [
     IconButton(
         onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctx) =>  SearchScreen()));
+          if (userNotifier.value.isNotEmpty) {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (ctx) => const SearchScreen()));
+          }
         },
         icon: const Icon(
           Icons.search,

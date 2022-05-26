@@ -9,20 +9,21 @@ part 'user_bloc.freezed.dart';
 part 'user_event.dart';
 part 'user_state.dart';
 
+ValueNotifier<List<UserResponse>> userNotifier = ValueNotifier([]);
 
 @injectable
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserService userService;
   UserBloc(this.userService) : super(UserState.initial()) {
     on<UserEvent>((event, emit) async {
-
-        
-
       if (state.response.isNotEmpty) {
+        // userNotifier.value.clear();
+        // userNotifier.value.addAll(state.response);
+        // userNotifier.notifyListeners();
         emit(UserState(
           isLoading: false,
           isError: false,
-          response: state.response,
+          response: state.response, 
         ));
       }
 
@@ -40,7 +41,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           response: [],
         );
       }, (r) {
-      
+        userNotifier.value.clear();
+        userNotifier.value.addAll(r);
+        userNotifier.notifyListeners();
         return UserState(
           isLoading: false,
           isError: false,

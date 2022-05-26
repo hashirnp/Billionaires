@@ -2,6 +2,7 @@ import 'package:company_profit_bloc/domain/User/Model/user_response/user_respons
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late BannerAd _bannerAd;
   bool _isBannerAdReady = false;
 
@@ -61,7 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
       BlocProvider.of<UserBloc>(context).add(const UserEvent.initialEvent());
     });
 
-    List<UserResponse> dummyList = [];
     final themeChange = Provider.of<DarkThemeProvider>(context);
 
     final key = GlobalKey<ScaffoldState>();
@@ -74,40 +74,69 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Align(
             alignment: Alignment.topCenter,
-            child: SafeArea(child: BlocBuilder<UserBloc, UserState>(
-              builder: (context, state) {
-                if (state.isLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                    ),
-                  );
-                } else if (state.isError) {
-                  return const Center(
-                    child: Text('Error'),
-                  );
-                } else if (state.response.isNotEmpty) {
-                  dummyList.clear();
-                  dummyList.addAll(state.response);
-                  return ListView.separated(
-                    physics: const ClampingScrollPhysics(),
-                    itemBuilder: (ctx, i) {
-                      final item = state.response[i];
-                      return ListItemWidget(item);
-                    },
-                    separatorBuilder: (ctx, i) {
-                      return const SizedBox();
-                    },
-                    itemCount: state.response.length,
-                    shrinkWrap: true,
-                  );
-                } else {
-                  return const Center(
-                    child: Text('Error'),
-                  );
-                }
-              },
-            )),
+            // child: SafeArea(child: BlocBuilder<UserBloc, UserState>(
+            //   builder: (context, state) {
+            //     if (state.isLoading) {
+            //       return const Center(
+            //         child: CircularProgressIndicator(
+            //           strokeWidth: 2,
+            //         ),
+            //       );
+            //     } else if (state.isError) {
+            //       return const Center(
+            //         child: Text('Error'),
+            //       );
+            //     } else if (state.response.isNotEmpty) {
+            //       dummyList.clear();
+            //       dummyList.addAll(state.response);
+            //       return ListView.separated(
+            //         physics: const ClampingScrollPhysics(),
+            //         itemBuilder: (ctx, i) {
+            //           final item = state.response[i];
+            //           return ListItemWidget(item);
+            //         },
+            //         separatorBuilder: (ctx, i) {
+            //           return const SizedBox();
+            //         },
+            //         itemCount: state.response.length,
+            //         shrinkWrap: true,
+            //       );
+            //     } else {
+            //       return const Center(
+            //         child: Text('Error'),
+            //       );
+            //     }
+            //   },
+            // )),
+            child: SafeArea(
+              child: ValueListenableBuilder(
+                  valueListenable: userNotifier,
+                  builder: (ctx, List<UserResponse> list, _) {
+                    if (list.isNotEmpty) {
+                      return ListView.separated(
+                        physics: const ClampingScrollPhysics(),
+                        itemBuilder: (ctx, i) {
+                          final item = list[i];
+                          return ListItemWidget(item); 
+                        },
+                        separatorBuilder: (ctx, i) {
+                          return const SizedBox();
+                        },
+                        itemCount: list.length,
+                        shrinkWrap: true,
+                      );
+                    }
+                    return  Center(
+                      child: SpinKitFadingCube(
+                        color: Colors.red,
+                        size: 50.0,
+                        controller: AnimationController(
+                            vsync: this,
+                            duration: const Duration(milliseconds: 1200)),
+                      ),
+                    );
+                  }),
+            ),
           ),
           if (_isBannerAdReady)
             Align(
