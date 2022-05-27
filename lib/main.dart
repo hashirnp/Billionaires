@@ -1,4 +1,5 @@
 import 'package:company_profit_bloc/domain/core/di/injectable.dart';
+import 'package:company_profit_bloc/presentation/Index%20Screen/index_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -9,10 +10,12 @@ import 'domain/core/shared_preferences/ThemeData.dart';
 import 'presentation/Home Screen/home_screen.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+ValueNotifier<int> indexNotifier = ValueNotifier(0);
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection();
-    MobileAds.instance.initialize();
+  MobileAds.instance.initialize();
 
   runApp(const MyApp());
 }
@@ -25,7 +28,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  DarkThemeProvider themeChangeProvider =  DarkThemeProvider();
+  DarkThemeProvider themeChangeProvider = DarkThemeProvider();
 
   @override
   void initState() {
@@ -50,7 +53,7 @@ class _MyAppState extends State<MyApp> {
               title: 'Flutter Demo',
               theme: Styles.themeData(themeChangeProvider.darkTheme, context),
               debugShowCheckedModeBanner: false,
-              home: const HomeScreen()),
+              home: const IndexScreen()),
         );
       },
     ));

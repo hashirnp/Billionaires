@@ -1,8 +1,6 @@
+import 'package:company_profit_bloc/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mailto/mailto.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({
@@ -49,13 +47,17 @@ class DrawerWidget extends StatelessWidget {
               leading:const Icon(Icons.home),
               title:const  Text("All Billionaires"),
               onTap: () {
+                indexNotifier.value=0;
+                indexNotifier.notifyListeners();
                 Navigator.pop(context);
               },
             ),
-            ListTile(
+            ListTile( 
               leading:const  Icon(Icons.filter),
               title: const Text("Filter by"),
               onTap: () {
+                indexNotifier.value=1;
+                indexNotifier.notifyListeners();
                 Navigator.pop(context);
               },
             ),
@@ -63,6 +65,8 @@ class DrawerWidget extends StatelessWidget {
               leading:const  Icon(Icons.business),
               title:const  Text("Industry"),
               onTap: () {
+                indexNotifier.value=2;
+                indexNotifier.notifyListeners();
                 Navigator.pop(context);
               },
             ),
