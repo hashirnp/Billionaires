@@ -22,8 +22,8 @@ class _$FilterEventTearOff {
     return const _InitialEvent();
   }
 
-  FilterEvent filterEvent({required String filterQuery}) {
-    return FilterEvent(
+  FilterQuery filterQuery({required String filterQuery}) {
+    return FilterQuery(
       filterQuery: filterQuery,
     );
   }
@@ -37,38 +37,38 @@ mixin _$FilterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialEvent,
-    required TResult Function(String filterQuery) filterEvent,
+    required TResult Function(String filterQuery) filterQuery,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(String filterQuery)? filterEvent,
+    TResult Function(String filterQuery)? filterQuery,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(String filterQuery)? filterEvent,
+    TResult Function(String filterQuery)? filterQuery,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initialEvent,
-    required TResult Function(FilterEvent value) filterEvent,
+    required TResult Function(FilterQuery value) filterQuery,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initialEvent,
-    TResult Function(FilterEvent value)? filterEvent,
+    TResult Function(FilterQuery value)? filterQuery,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initialEvent,
-    TResult Function(FilterEvent value)? filterEvent,
+    TResult Function(FilterQuery value)? filterQuery,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -110,12 +110,18 @@ class __$InitialEventCopyWithImpl<$Res> extends _$FilterEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InitialEvent implements _InitialEvent {
+class _$_InitialEvent with DiagnosticableTreeMixin implements _InitialEvent {
   const _$_InitialEvent();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FilterEvent.initialEvent()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'FilterEvent.initialEvent'));
   }
 
   @override
@@ -131,7 +137,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialEvent,
-    required TResult Function(String filterQuery) filterEvent,
+    required TResult Function(String filterQuery) filterQuery,
   }) {
     return initialEvent();
   }
@@ -140,7 +146,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(String filterQuery)? filterEvent,
+    TResult Function(String filterQuery)? filterQuery,
   }) {
     return initialEvent?.call();
   }
@@ -149,7 +155,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(String filterQuery)? filterEvent,
+    TResult Function(String filterQuery)? filterQuery,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -162,7 +168,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initialEvent,
-    required TResult Function(FilterEvent value) filterEvent,
+    required TResult Function(FilterQuery value) filterQuery,
   }) {
     return initialEvent(this);
   }
@@ -171,7 +177,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initialEvent,
-    TResult Function(FilterEvent value)? filterEvent,
+    TResult Function(FilterQuery value)? filterQuery,
   }) {
     return initialEvent?.call(this);
   }
@@ -180,7 +186,7 @@ class _$_InitialEvent implements _InitialEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initialEvent,
-    TResult Function(FilterEvent value)? filterEvent,
+    TResult Function(FilterQuery value)? filterQuery,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -195,28 +201,28 @@ abstract class _InitialEvent implements FilterEvent {
 }
 
 /// @nodoc
-abstract class $FilterEventCopyWith<$Res> {
-  factory $FilterEventCopyWith(
-          FilterEvent value, $Res Function(FilterEvent) then) =
-      _$FilterEventCopyWithImpl<$Res>;
+abstract class $FilterQueryCopyWith<$Res> {
+  factory $FilterQueryCopyWith(
+          FilterQuery value, $Res Function(FilterQuery) then) =
+      _$FilterQueryCopyWithImpl<$Res>;
   $Res call({String filterQuery});
 }
 
 /// @nodoc
-class _$FilterEventCopyWithImpl<$Res> extends _$FilterEventCopyWithImpl<$Res>
-    implements $FilterEventCopyWith<$Res> {
-  _$FilterEventCopyWithImpl(
-      FilterEvent _value, $Res Function(FilterEvent) _then)
-      : super(_value, (v) => _then(v as FilterEvent));
+class _$FilterQueryCopyWithImpl<$Res> extends _$FilterEventCopyWithImpl<$Res>
+    implements $FilterQueryCopyWith<$Res> {
+  _$FilterQueryCopyWithImpl(
+      FilterQuery _value, $Res Function(FilterQuery) _then)
+      : super(_value, (v) => _then(v as FilterQuery));
 
   @override
-  FilterEvent get _value => super._value as FilterEvent;
+  FilterQuery get _value => super._value as FilterQuery;
 
   @override
   $Res call({
     Object? filterQuery = freezed,
   }) {
-    return _then(FilterEvent(
+    return _then(FilterQuery(
       filterQuery: filterQuery == freezed
           ? _value.filterQuery
           : filterQuery // ignore: cast_nullable_to_non_nullable
@@ -227,22 +233,30 @@ class _$FilterEventCopyWithImpl<$Res> extends _$FilterEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FilterEvent implements FilterEvent {
-  const _$FilterEvent({required this.filterQuery});
+class _$FilterQuery with DiagnosticableTreeMixin implements FilterQuery {
+  const _$FilterQuery({required this.filterQuery});
 
   @override
   final String filterQuery;
 
   @override
-  String toString() {
-    return 'FilterEvent.filterEvent(filterQuery: $filterQuery)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'FilterEvent.filterQuery(filterQuery: $filterQuery)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FilterEvent.filterQuery'))
+      ..add(DiagnosticsProperty('filterQuery', filterQuery));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FilterEvent &&
+            other is FilterQuery &&
             const DeepCollectionEquality()
                 .equals(other.filterQuery, filterQuery));
   }
@@ -253,36 +267,36 @@ class _$FilterEvent implements FilterEvent {
 
   @JsonKey(ignore: true)
   @override
-  $FilterEventCopyWith<FilterEvent> get copyWith =>
-      _$FilterEventCopyWithImpl<FilterEvent>(this, _$identity);
+  $FilterQueryCopyWith<FilterQuery> get copyWith =>
+      _$FilterQueryCopyWithImpl<FilterQuery>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialEvent,
-    required TResult Function(String filterQuery) filterEvent,
+    required TResult Function(String filterQuery) filterQuery,
   }) {
-    return filterEvent(filterQuery);
+    return filterQuery(this.filterQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(String filterQuery)? filterEvent,
+    TResult Function(String filterQuery)? filterQuery,
   }) {
-    return filterEvent?.call(filterQuery);
+    return filterQuery?.call(this.filterQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEvent,
-    TResult Function(String filterQuery)? filterEvent,
+    TResult Function(String filterQuery)? filterQuery,
     required TResult orElse(),
   }) {
-    if (filterEvent != null) {
-      return filterEvent(filterQuery);
+    if (filterQuery != null) {
+      return filterQuery(this.filterQuery);
     }
     return orElse();
   }
@@ -291,40 +305,40 @@ class _$FilterEvent implements FilterEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initialEvent,
-    required TResult Function(FilterEvent value) filterEvent,
+    required TResult Function(FilterQuery value) filterQuery,
   }) {
-    return filterEvent(this);
+    return filterQuery(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initialEvent,
-    TResult Function(FilterEvent value)? filterEvent,
+    TResult Function(FilterQuery value)? filterQuery,
   }) {
-    return filterEvent?.call(this);
+    return filterQuery?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initialEvent,
-    TResult Function(FilterEvent value)? filterEvent,
+    TResult Function(FilterQuery value)? filterQuery,
     required TResult orElse(),
   }) {
-    if (filterEvent != null) {
-      return filterEvent(this);
+    if (filterQuery != null) {
+      return filterQuery(this);
     }
     return orElse();
   }
 }
 
-abstract class FilterEvent implements FilterEvent {
-  const factory FilterEvent({required String filterQuery}) = _$FilterEvent;
+abstract class FilterQuery implements FilterEvent {
+  const factory FilterQuery({required String filterQuery}) = _$FilterQuery;
 
   String get filterQuery;
   @JsonKey(ignore: true)
-  $FilterEventCopyWith<FilterEvent> get copyWith =>
+  $FilterQueryCopyWith<FilterQuery> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -412,15 +426,23 @@ class __$InitialCopyWithImpl<$Res> extends _$FilterStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial({required this.response});
 
   @override
   final List<UserResponse> response;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FilterState(response: $response)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FilterState'))
+      ..add(DiagnosticsProperty('response', response));
   }
 
   @override

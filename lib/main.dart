@@ -1,3 +1,4 @@
+import 'package:company_profit_bloc/application/filter_bloc/filter_bloc.dart';
 import 'package:company_profit_bloc/domain/core/di/injectable.dart';
 import 'package:company_profit_bloc/presentation/Index%20Screen/index_screen.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,10 @@ class _MyAppState extends State<MyApp> {
     }, child: Consumer<DarkThemeProvider>(
       builder: (context, value, child) {
         return MultiBlocProvider(
-          providers: [BlocProvider(create: (ctx) => getIt<UserBloc>())],
+          providers: [
+            BlocProvider(create: (ctx) => getIt<UserBloc>()),
+            BlocProvider(create: (ctx)=>getIt<FilterBloc>())
+          ],
           child: MaterialApp(
               title: 'Flutter Demo',
               theme: Styles.themeData(themeChangeProvider.darkTheme, context),

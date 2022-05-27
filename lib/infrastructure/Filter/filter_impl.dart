@@ -14,6 +14,7 @@ class FilterImpl extends FilterService {
   @override
   Future<Either<MainFailure, List<UserResponse>>> getFilteredData(
       {required String query}) async {
+        print("Quyer is  "+query);
     try {
       final Response response =
           await Dio(BaseOptions()).get(filterBillionairesUrl + query);

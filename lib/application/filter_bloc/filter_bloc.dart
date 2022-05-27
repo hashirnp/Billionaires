@@ -2,12 +2,14 @@ import 'package:bloc/bloc.dart';
 import 'package:company_profit_bloc/domain/Filter/filter_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-
+import 'package:flutter/foundation.dart';
 import '../../domain/User/Model/user_response/user_response.dart';
 
 part 'filter_bloc.freezed.dart';
 part 'filter_event.dart';
 part 'filter_state.dart';
+
+ValueNotifier<List<UserResponse>> filterNotifier = ValueNotifier([]);
 
 @injectable
 class FilterBloc extends Bloc<FilterEvent, FilterState> {
@@ -18,10 +20,19 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       emit(const FilterState(response: []));
     });
 
-    on<FilterEvent>((event, emit) async {
+    on<FilterQuery>((event, emit) async {
       emit(const FilterState(response: []));
-       final result =
-          await filterService.getFilteredData( query: event.filterQuery);
+      final result =
+          await filterService.getFilteredData(query: event.filterQuery);
+      final _state = result.fold((l) {
+        return const FilterState(response: []);
+      }, (r) {
+        filterNotifier.value.clear();
+        filterNotifier.value.addAll(r);
+        filterNotifier.notifyListeners();
+        return FilterState(response: r);
+      });
+      emit(_state);
     });
   }
 }
