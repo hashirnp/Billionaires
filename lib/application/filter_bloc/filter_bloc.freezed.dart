@@ -346,9 +346,11 @@ abstract class FilterQuery implements FilterEvent {
 class _$FilterStateTearOff {
   const _$FilterStateTearOff();
 
-  _Initial call({required List<UserResponse> response}) {
+  _Initial call(
+      {required List<UserResponse> response, required bool isLoading}) {
     return _Initial(
       response: response,
+      isLoading: isLoading,
     );
   }
 }
@@ -359,6 +361,7 @@ const $FilterState = _$FilterStateTearOff();
 /// @nodoc
 mixin _$FilterState {
   List<UserResponse> get response => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FilterStateCopyWith<FilterState> get copyWith =>
@@ -370,7 +373,7 @@ abstract class $FilterStateCopyWith<$Res> {
   factory $FilterStateCopyWith(
           FilterState value, $Res Function(FilterState) then) =
       _$FilterStateCopyWithImpl<$Res>;
-  $Res call({List<UserResponse> response});
+  $Res call({List<UserResponse> response, bool isLoading});
 }
 
 /// @nodoc
@@ -384,12 +387,17 @@ class _$FilterStateCopyWithImpl<$Res> implements $FilterStateCopyWith<$Res> {
   @override
   $Res call({
     Object? response = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
       response: response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
               as List<UserResponse>,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -399,7 +407,7 @@ abstract class _$InitialCopyWith<$Res> implements $FilterStateCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
   @override
-  $Res call({List<UserResponse> response});
+  $Res call({List<UserResponse> response, bool isLoading});
 }
 
 /// @nodoc
@@ -414,12 +422,17 @@ class __$InitialCopyWithImpl<$Res> extends _$FilterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? response = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_Initial(
       response: response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
               as List<UserResponse>,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -427,14 +440,16 @@ class __$InitialCopyWithImpl<$Res> extends _$FilterStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial with DiagnosticableTreeMixin implements _Initial {
-  const _$_Initial({required this.response});
+  const _$_Initial({required this.response, required this.isLoading});
 
   @override
   final List<UserResponse> response;
+  @override
+  final bool isLoading;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FilterState(response: $response)';
+    return 'FilterState(response: $response, isLoading: $isLoading)';
   }
 
   @override
@@ -442,7 +457,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'FilterState'))
-      ..add(DiagnosticsProperty('response', response));
+      ..add(DiagnosticsProperty('response', response))
+      ..add(DiagnosticsProperty('isLoading', isLoading));
   }
 
   @override
@@ -450,12 +466,15 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Initial &&
-            const DeepCollectionEquality().equals(other.response, response));
+            const DeepCollectionEquality().equals(other.response, response) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(response));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(response),
+      const DeepCollectionEquality().hash(isLoading));
 
   @JsonKey(ignore: true)
   @override
@@ -464,10 +483,14 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 }
 
 abstract class _Initial implements FilterState {
-  const factory _Initial({required List<UserResponse> response}) = _$_Initial;
+  const factory _Initial(
+      {required List<UserResponse> response,
+      required bool isLoading}) = _$_Initial;
 
   @override
   List<UserResponse> get response;
+  @override
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$InitialCopyWith<_Initial> get copyWith =>

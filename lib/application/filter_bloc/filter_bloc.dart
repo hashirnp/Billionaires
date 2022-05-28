@@ -17,20 +17,25 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
 
   FilterBloc(this.filterService) : super(FilterState.initial()) {
     on<_InitialEvent>((event, emit) {
-      emit(const FilterState(response: []));
+      emit(const FilterState(response: [], isLoading: true));
     });
 
     on<FilterQuery>((event, emit) async {
-      emit(const FilterState(response: []));
+      if (state.response.isNotEmpty) {
+        emit(FilterState(response: state.response, isLoading: true));
+      } else {
+        emit(const FilterState(response: [], isLoading: true));
+      }
+
       final result =
           await filterService.getFilteredData(query: event.filterQuery);
       final _state = result.fold((l) {
-        return const FilterState(response: []);
+        return const FilterState(response: [], isLoading: false);
       }, (r) {
         filterNotifier.value.clear();
         filterNotifier.value.addAll(r);
         filterNotifier.notifyListeners();
-        return FilterState(response: r);
+        return FilterState(response: r, isLoading: false);
       });
       emit(_state);
     });

@@ -4,7 +4,11 @@ part of 'filter_bloc.dart';
 class FilterState with _$FilterState {
   const factory FilterState({
     required List<UserResponse> response,
+    required bool isLoading,
   }) = _Initial;
 
-  factory FilterState.initial() => const FilterState(response: []);
+  factory FilterState.initial() => const FilterState(
+        response: [],
+        isLoading: false,
+      );
 }
