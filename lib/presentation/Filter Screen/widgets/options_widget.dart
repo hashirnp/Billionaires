@@ -10,9 +10,9 @@ class OptionsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      BlocProvider.of<FilterBloc>(context)
-          .add(const FilterEvent.filterQuery(filterQuery: "youngest"));
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      // BlocProvider.of<FilterBloc>(context)
+      //     .add(const FilterEvent.filterQuery(filterQuery: "youngest"));
     });
     return Align(
       alignment: Alignment.center,

@@ -4,9 +4,11 @@ import 'package:company_profit_bloc/presentation/Home%20Screen/home_screen.dart'
 import 'package:company_profit_bloc/presentation/Industry%20Screen/industry_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 
+import '../../application/filter_bloc/filter_bloc.dart';
 import '../../domain/core/AdHelper/adhelper.dart';
 import '../../domain/core/shared_preferences/DarkThemeProvider.dart';
 import '../Home Screen/widgets/appbar_widget.dart';
@@ -58,9 +60,9 @@ class _IndexScreenState extends State<IndexScreen> {
   @override
   Widget build(BuildContext context) {
     final pages = [
-    const  HomeScreen(),
-     const FilterScreen(),
-     const IndustryScreen(),
+      const HomeScreen(),
+      const FilterScreen(),
+      const IndustryScreen(),
     ];
 
     final themeChange = Provider.of<DarkThemeProvider>(context);
@@ -76,6 +78,10 @@ class _IndexScreenState extends State<IndexScreen> {
             child: ValueListenableBuilder(
                 valueListenable: indexNotifier,
                 builder: (context, int i, _) {
+                  if (i == 1) {
+                    BlocProvider.of<FilterBloc>(context).add(
+                        const FilterEvent.filterQuery(filterQuery: "youngest"));
+                  }
                   return pages[i];
                 }),
           ),
