@@ -6,6 +6,7 @@ import 'package:company_profit_bloc/domain/User/Model/user_response/user_respons
 import 'package:company_profit_bloc/domain/core/Failure/main_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../core/strings.dart';
@@ -15,9 +16,11 @@ class FilterImpl extends FilterService {
   @override
   Future<Either<MainFailure, List<UserResponse>>> getFilteredData(
       {required String query}) async {
-        print("Query is  "+query);
-        filterNotifier.value.clear();
-        filterNotifier.notifyListeners(); 
+    if (kDebugMode) {
+      print("Query is  " + query);
+    }
+    filterNotifier.value.clear();
+    filterNotifier.notifyListeners();
     try {
       final Response response =
           await Dio(BaseOptions()).get(filterBillionairesUrl + query);

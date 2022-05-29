@@ -33,7 +33,7 @@ class SearchData implements SearchService {
 
   Future<void> refreshUI(
       {required List<UserResponse> list, required String query}) async {
-    final _category = await getCategory(list: list, query: query);
+    final _category = getCategory(list: list, query: query);
     searchNotifier.value.clear();
 
     Future.forEach(_category, (UserResponse model) {

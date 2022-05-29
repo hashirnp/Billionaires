@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../application/user/user_bloc.dart';
 import '../../domain/core/debounce/debounce.dart';
 import '../../infrastructure/Search/search_impl.dart';
-import '../Home Screen/widgets/listItem.dart';
+import '../Home Screen/widgets/list_Item.dart';
 
 ValueNotifier<List<UserResponse>> valueNotifier = ValueNotifier([]);
 
@@ -16,7 +16,7 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _debouncer = Debouncer(milliseconds: 1 * 1000);
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       BlocProvider.of<UserBloc>(context).add(const UserEvent.initialEvent());
     });
 
@@ -34,7 +34,6 @@ class SearchScreen extends StatelessWidget {
         onChanged: (val) {
           _debouncer.run(() {
             SearchData().refreshUI(list: list, query: val);
-            
           });
         },
       )),

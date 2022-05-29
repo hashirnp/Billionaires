@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../application/user/user_bloc.dart';
-import 'widgets/listItem.dart';
+import 'widgets/list_Item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,19 +14,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  
-
   @override
   Widget build(BuildContext context) {
-
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-        BlocProvider.of<UserBloc>(context).add(const UserEvent.initialEvent());
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      BlocProvider.of<UserBloc>(context).add(const UserEvent.initialEvent());
     });
 
-   
-
     return SafeArea(
-      
       child: Stack(
         children: [
           Align(
@@ -95,7 +89,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   }),
             ),
           ),
-          
         ],
       ),
     );

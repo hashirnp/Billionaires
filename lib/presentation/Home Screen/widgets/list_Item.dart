@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,7 +42,9 @@ class _ListItemWidgetState extends State<ListItemWidget> {
           _isInterstitialAdReady = true;
         },
         onAdFailedToLoad: (err) {
-          print('Failed to load an interstitial ad: ${err.message}');
+          if (kDebugMode) {
+            print('Failed to load an interstitial ad: ${err.message}');
+          }
           _isInterstitialAdReady = false;
         },
       ),
@@ -51,9 +53,7 @@ class _ListItemWidgetState extends State<ListItemWidget> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _interstitialAd?.dispose();
-
     super.dispose();
   }
 
@@ -156,7 +156,7 @@ class _ListItemWidgetState extends State<ListItemWidget> {
                     if (!_isInterstitialAdReady) {
                       _loadInterstitialAd();
                     }
-                    if (widget.item.rank! % 3 == 0 && _isInterstitialAdReady) {
+                    if (widget.item.rank! % 2 == 0 && _isInterstitialAdReady) {
                       _interstitialAd?.show();
                     }
                     Navigator.of(context).push(MaterialPageRoute(

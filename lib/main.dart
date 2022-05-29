@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import 'application/user/user_bloc.dart';
 import 'domain/core/shared_preferences/DarkThemeProvider.dart';
 import 'domain/core/shared_preferences/ThemeData.dart';
-import 'presentation/Home Screen/home_screen.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 ValueNotifier<int> indexNotifier = ValueNotifier(0);
@@ -51,7 +50,7 @@ class _MyAppState extends State<MyApp> {
         return MultiBlocProvider(
           providers: [
             BlocProvider(create: (ctx) => getIt<UserBloc>()),
-            BlocProvider(create: (ctx)=>getIt<FilterBloc>())
+            BlocProvider(create: (ctx) => getIt<FilterBloc>())
           ],
           child: MaterialApp(
               title: 'Flutter Demo',
