@@ -1,3 +1,4 @@
+
 import 'package:company_profit_bloc/main.dart';
 import 'package:company_profit_bloc/presentation/Filter%20Screen/filter_screen.dart';
 import 'package:company_profit_bloc/presentation/Home%20Screen/home_screen.dart';
@@ -9,6 +10,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 
 import '../../application/filter_bloc/filter_bloc.dart';
+import '../../application/indsutry/industry_bloc.dart';
 import '../../domain/core/AdHelper/adhelper.dart';
 import '../../domain/core/shared_preferences/DarkThemeProvider.dart';
 import '../Home Screen/widgets/appbar_widget.dart';
@@ -72,28 +74,36 @@ class _IndexScreenState extends State<IndexScreen> {
         drawer: const DrawerWidget(),
         key: key,
         appBar: appBarWidget(themeChange: themeChange, context: context),
-        body: Stack(children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: ValueListenableBuilder(
-                valueListenable: indexNotifier,
-                builder: (context, int i, _) {
-                  if (i == 1) {
-                    BlocProvider.of<FilterBloc>(context).add(
-                        const FilterEvent.filterQuery(filterQuery: "youngest"));
-                  }
-                  return pages[i];
-                }),
-          ),
-          if (_isBannerAdReady)
+        body: SafeArea(
+          child: Stack(children: [
             Align(
-              alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                width: _bannerAd.size.width.toDouble(),
-                height: _bannerAd.size.height.toDouble(),
-                child: AdWidget(ad: _bannerAd),
-              ),
+              alignment: Alignment.topCenter,
+              child: ValueListenableBuilder(
+                  valueListenable: indexNotifier,
+                  builder: (context, int i, _) {
+                    if (i == 1) {
+                      BlocProvider.of<FilterBloc>(context).add(
+                          const FilterEvent.filterQuery(
+                              filterQuery: "youngest"));
+                    }
+                    if (i == 2) {
+                      BlocProvider.of<IndustryBloc>(context).add(
+                          const IndustryEvent.initialEvent(
+                              indsutryQuery: 'technology'));
+                    }
+                    return pages[i];
+                  }),
             ),
-        ]));
+            if (_isBannerAdReady)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SizedBox(
+                  width: _bannerAd.size.width.toDouble(),
+                  height: _bannerAd.size.height.toDouble(),
+                  child: AdWidget(ad: _bannerAd),
+                ),
+              ),
+          ]),
+        ));
   }
 }

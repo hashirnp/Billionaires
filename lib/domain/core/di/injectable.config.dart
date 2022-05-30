@@ -7,8 +7,8 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../../application/bloc/industry_bloc.dart' as _i10;
 import '../../../application/filter_bloc/filter_bloc.dart' as _i9;
+import '../../../application/indsutry/industry_bloc.dart' as _i10;
 import '../../../application/user/user_bloc.dart' as _i11;
 import '../../../infrastructure/Filter/filter_impl.dart' as _i4;
 import '../../../infrastructure/Industry/industry_impl.dart' as _i6;

@@ -1,7 +1,5 @@
-import 'package:company_profit_bloc/application/filter_bloc/filter_bloc.dart';
 import 'package:company_profit_bloc/presentation/Filter%20Screen/widgets/list_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'widgets/options_widget.dart';
 

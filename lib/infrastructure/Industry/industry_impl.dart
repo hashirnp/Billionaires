@@ -19,12 +19,13 @@ class IndustryImplementation extends IndustryService {
           await Dio(BaseOptions()).get(industryBillionairesUrl + industryQuery);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        log("got data from server");
+       //log(response.toString());
         final result = (response.data as List).map((e) {
           return UserResponse.fromJson(e);
-        }).toList();
+        }).toList(); 
         return Right(result);
       } else {
+        log("error :- client error" );
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
