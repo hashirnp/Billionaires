@@ -6,12 +6,14 @@ class IndustryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: const [
-        Align(alignment: Alignment.center, child: OptionsWidget()),
-        ListWidgetIndustry(),
-      ],
-    );
+    // return ListView(
+    //   shrinkWrap: true,
+    //   children: const [
+    //     Align(alignment: Alignment.center, child: OptionsWidget()),
+    //     ListWidgetIndustry(),
+    //   ],
+    // );
+
+    return const ListWidgetIndustry();
   }
 }

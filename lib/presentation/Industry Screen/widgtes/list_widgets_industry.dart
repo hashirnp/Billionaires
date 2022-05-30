@@ -10,35 +10,32 @@ class ListWidgetIndustry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child:
-          BlocBuilder<IndustryBloc, IndustryState>(builder: (context, state) {
+    return BlocBuilder<IndustryBloc, IndustryState>(builder: (context, state) {
         if (state.isLoading) {
-          return const Center(
-            child: SpinKitFadingCube(color: Colors.red, size: 50),
-          );
+    return const Center(
+      child: SpinKitFadingCube(color: Colors.red, size: 50),
+    );
         }
         if (state.isError) {
-          return const Center(
-            child: Text("Error while loading data"),
-          );
+    return const Center(
+      child: Text("Error while loading data"),
+    );
         }
         if (state.response.isNotEmpty) {
-          return ListView.separated(
-              physics: const ClampingScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (context, i) {
-                final item = state.response[i];
-                return ListItemWidget(item);
-              },
-              separatorBuilder: (context, i) {
-                return const SizedBox();
-              },
-              itemCount: state.response.length);
+    return ListView.separated(
+        physics: const ClampingScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (context, i) {
+          final item = state.response[i];
+          return ListItemWidget(item);
+        },
+        separatorBuilder: (context, i) {
+          return const SizedBox();
+        },
+        itemCount: state.response.length);
         }
         return const SizedBox();
-      }),
-    );
+      });
   }
 }
 
