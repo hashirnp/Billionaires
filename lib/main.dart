@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
+import 'application/bloc/industry_bloc.dart';
 import 'application/user/user_bloc.dart';
 import 'domain/core/shared_preferences/DarkThemeProvider.dart';
 import 'domain/core/shared_preferences/ThemeData.dart';
@@ -50,7 +51,8 @@ class _MyAppState extends State<MyApp> {
         return MultiBlocProvider(
           providers: [
             BlocProvider(create: (ctx) => getIt<UserBloc>()),
-            BlocProvider(create: (ctx) => getIt<FilterBloc>())
+            BlocProvider(create: (ctx) => getIt<FilterBloc>()),
+            BlocProvider(create: (ctx) => getIt<IndustryBloc>())
           ],
           child: MaterialApp(
               title: 'Flutter Demo',

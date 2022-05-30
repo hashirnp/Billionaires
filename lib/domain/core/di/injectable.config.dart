@@ -7,8 +7,9 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import '../../../application/bloc/industry_bloc.dart' as _i10;
 import '../../../application/filter_bloc/filter_bloc.dart' as _i9;
-import '../../../application/user/user_bloc.dart' as _i10;
+import '../../../application/user/user_bloc.dart' as _i11;
 import '../../../infrastructure/Filter/filter_impl.dart' as _i4;
 import '../../../infrastructure/Industry/industry_impl.dart' as _i6;
 import '../../../infrastructure/User/user_imple.dart' as _i8;
@@ -26,6 +27,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i5.IndustryService>(() => _i6.IndustryImplementation());
   gh.lazySingleton<_i7.UserService>(() => _i8.UserImplemmentations());
   gh.factory<_i9.FilterBloc>(() => _i9.FilterBloc(get<_i3.FilterService>()));
-  gh.factory<_i10.UserBloc>(() => _i10.UserBloc(get<_i7.UserService>()));
+  gh.factory<_i10.IndustryBloc>(
+      () => _i10.IndustryBloc(get<_i5.IndustryService>()));
+  gh.factory<_i11.UserBloc>(() => _i11.UserBloc(get<_i7.UserService>()));
   return get;
 }

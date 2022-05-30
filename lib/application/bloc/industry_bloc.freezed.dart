@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$IndustryEventTearOff {
   const _$IndustryEventTearOff();
 
-  _Started started() {
-    return const _Started();
+  _InitialEvent initialEvent({required String indsutryQuery}) {
+    return _InitialEvent(
+      indsutryQuery: indsutryQuery,
+    );
   }
 }
 
@@ -28,37 +30,43 @@ const $IndustryEvent = _$IndustryEventTearOff();
 
 /// @nodoc
 mixin _$IndustryEvent {
+  String get indsutryQuery => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(String indsutryQuery) initialEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(String indsutryQuery)? initialEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(String indsutryQuery)? initialEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_InitialEvent value) initialEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InitialEvent value)? initialEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InitialEvent value)? initialEvent,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $IndustryEventCopyWith<IndustryEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -67,6 +75,7 @@ abstract class $IndustryEventCopyWith<$Res> {
   factory $IndustryEventCopyWith(
           IndustryEvent value, $Res Function(IndustryEvent) then) =
       _$IndustryEventCopyWithImpl<$Res>;
+  $Res call({String indsutryQuery});
 }
 
 /// @nodoc
@@ -77,67 +86,109 @@ class _$IndustryEventCopyWithImpl<$Res>
   final IndustryEvent _value;
   // ignore: unused_field
   final $Res Function(IndustryEvent) _then;
-}
-
-/// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$StartedCopyWithImpl<$Res> extends _$IndustryEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
 
   @override
-  _Started get _value => super._value as _Started;
+  $Res call({
+    Object? indsutryQuery = freezed,
+  }) {
+    return _then(_value.copyWith(
+      indsutryQuery: indsutryQuery == freezed
+          ? _value.indsutryQuery
+          : indsutryQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$InitialEventCopyWith<$Res>
+    implements $IndustryEventCopyWith<$Res> {
+  factory _$InitialEventCopyWith(
+          _InitialEvent value, $Res Function(_InitialEvent) then) =
+      __$InitialEventCopyWithImpl<$Res>;
+  @override
+  $Res call({String indsutryQuery});
+}
+
+/// @nodoc
+class __$InitialEventCopyWithImpl<$Res>
+    extends _$IndustryEventCopyWithImpl<$Res>
+    implements _$InitialEventCopyWith<$Res> {
+  __$InitialEventCopyWithImpl(
+      _InitialEvent _value, $Res Function(_InitialEvent) _then)
+      : super(_value, (v) => _then(v as _InitialEvent));
+
+  @override
+  _InitialEvent get _value => super._value as _InitialEvent;
+
+  @override
+  $Res call({
+    Object? indsutryQuery = freezed,
+  }) {
+    return _then(_InitialEvent(
+      indsutryQuery: indsutryQuery == freezed
+          ? _value.indsutryQuery
+          : indsutryQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_InitialEvent implements _InitialEvent {
+  const _$_InitialEvent({required this.indsutryQuery});
+
+  @override
+  final String indsutryQuery;
 
   @override
   String toString() {
-    return 'IndustryEvent.started()';
+    return 'IndustryEvent.initialEvent(indsutryQuery: $indsutryQuery)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Started);
+        (other.runtimeType == runtimeType &&
+            other is _InitialEvent &&
+            const DeepCollectionEquality()
+                .equals(other.indsutryQuery, indsutryQuery));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(indsutryQuery));
+
+  @JsonKey(ignore: true)
+  @override
+  _$InitialEventCopyWith<_InitialEvent> get copyWith =>
+      __$InitialEventCopyWithImpl<_InitialEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(String indsutryQuery) initialEvent,
   }) {
-    return started();
+    return initialEvent(indsutryQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(String indsutryQuery)? initialEvent,
   }) {
-    return started?.call();
+    return initialEvent?.call(indsutryQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(String indsutryQuery)? initialEvent,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (initialEvent != null) {
+      return initialEvent(indsutryQuery);
     }
     return orElse();
   }
@@ -145,42 +196,57 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_InitialEvent value) initialEvent,
   }) {
-    return started(this);
+    return initialEvent(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InitialEvent value)? initialEvent,
   }) {
-    return started?.call(this);
+    return initialEvent?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InitialEvent value)? initialEvent,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (initialEvent != null) {
+      return initialEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements IndustryEvent {
-  const factory _Started() = _$_Started;
+abstract class _InitialEvent implements IndustryEvent {
+  const factory _InitialEvent({required String indsutryQuery}) =
+      _$_InitialEvent;
+
+  @override
+  String get indsutryQuery;
+  @override
+  @JsonKey(ignore: true)
+  _$InitialEventCopyWith<_InitialEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$IndustryStateTearOff {
   const _$IndustryStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  _Initial call(
+      {required bool isLoading,
+      required bool isError,
+      required List<UserResponse> response}) {
+    return _Initial(
+      isLoading: isLoading,
+      isError: isError,
+      response: response,
+    );
   }
 }
 
@@ -189,37 +255,12 @@ const $IndustryState = _$IndustryStateTearOff();
 
 /// @nodoc
 mixin _$IndustryState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
+  List<UserResponse> get response => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $IndustryStateCopyWith<IndustryState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -228,6 +269,7 @@ abstract class $IndustryStateCopyWith<$Res> {
   factory $IndustryStateCopyWith(
           IndustryState value, $Res Function(IndustryState) then) =
       _$IndustryStateCopyWithImpl<$Res>;
+  $Res call({bool isLoading, bool isError, List<UserResponse> response});
 }
 
 /// @nodoc
@@ -238,12 +280,36 @@ class _$IndustryStateCopyWithImpl<$Res>
   final IndustryState _value;
   // ignore: unused_field
   final $Res Function(IndustryState) _then;
+
+  @override
+  $Res call({
+    Object? isLoading = freezed,
+    Object? isError = freezed,
+    Object? response = freezed,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      response: response == freezed
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as List<UserResponse>,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
+abstract class _$InitialCopyWith<$Res> implements $IndustryStateCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
+  @override
+  $Res call({bool isLoading, bool isError, List<UserResponse> response});
 }
 
 /// @nodoc
@@ -254,84 +320,85 @@ class __$InitialCopyWithImpl<$Res> extends _$IndustryStateCopyWithImpl<$Res>
 
   @override
   _Initial get _value => super._value as _Initial;
+
+  @override
+  $Res call({
+    Object? isLoading = freezed,
+    Object? isError = freezed,
+    Object? response = freezed,
+  }) {
+    return _then(_Initial(
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      response: response == freezed
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as List<UserResponse>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial();
+  const _$_Initial(
+      {required this.isLoading, required this.isError, required this.response});
+
+  @override
+  final bool isLoading;
+  @override
+  final bool isError;
+  @override
+  final List<UserResponse> response;
 
   @override
   String toString() {
-    return 'IndustryState.initial()';
+    return 'IndustryState(isLoading: $isLoading, isError: $isError, response: $response)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType &&
+            other is _Initial &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.isError, isError) &&
+            const DeepCollectionEquality().equals(other.response, response));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(isError),
+      const DeepCollectionEquality().hash(response));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  _$InitialCopyWith<_Initial> get copyWith =>
+      __$InitialCopyWithImpl<_Initial>(this, _$identity);
 }
 
 abstract class _Initial implements IndustryState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial(
+      {required bool isLoading,
+      required bool isError,
+      required List<UserResponse> response}) = _$_Initial;
+
+  @override
+  bool get isLoading;
+  @override
+  bool get isError;
+  @override
+  List<UserResponse> get response;
+  @override
+  @JsonKey(ignore: true)
+  _$InitialCopyWith<_Initial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
