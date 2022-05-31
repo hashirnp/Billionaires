@@ -48,4 +48,5 @@ lib/infrastructure/api_key.dart
 lib/domain/core/AdHelper/adhelper.dart
 android/key.properties
 android/app/key
+android/app/src/main/AndroidManifest.xml
 
