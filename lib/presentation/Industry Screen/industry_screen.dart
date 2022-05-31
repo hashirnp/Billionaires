@@ -1,10 +1,8 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../application/indsutry/industry_bloc.dart';
 import '../../domain/core/shared_preferences/ThemeData.dart';
 import 'widgtes/list_widgets_industry.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 
 class IndustryScreen extends StatefulWidget {
   const IndustryScreen({Key? key}) : super(key: key);
