@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
               debugShowCheckedModeBanner: false,
               home: EasySplashScreen(
                 logo: Image.asset('assets/images/logo.png'),
-                title: const Text(
+                title: const Text( 
                    "",
                   style:  TextStyle(
                     fontSize: 18,
