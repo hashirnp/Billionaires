@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:time_machine/time_machine.dart';
 
 import '../../../domain/User/Model/user_response/user_response.dart';
-import '../detail_screen.dart';
 class Secion1 extends StatelessWidget {
   final String url;
   final UserResponse list;

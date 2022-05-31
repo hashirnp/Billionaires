@@ -14,6 +14,37 @@ class OptionsWidget extends StatelessWidget {
       // BlocProvider.of<FilterBloc>(context)
       //     .add(const FilterEvent.filterQuery(filterQuery: "youngest"));
     });
+    List<String> list = [
+      "Youngest",
+      "Oldest",
+      "Men",
+      "Women",
+    ];
+
+    // return ListView.separated(
+    //   // scrollDirection: Axis.horizontal, 
+    //   itemBuilder: ((context, i) {
+    //     return ElevatedButton(
+    //         onPressed: () {
+    //           BlocProvider.of<FilterBloc>(context)
+    //               .add(FilterEvent.filterQuery(filterQuery: list[i]));
+    //         },
+    //         child: Text(list[i]),
+    //         style: ButtonStyle(
+    //             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+    //                 RoundedRectangleBorder(
+    //           borderRadius: BorderRadius.circular(18.0),
+    //         ))));
+    //   }),
+    //   itemCount: list.length,
+    //   shrinkWrap: true,
+    //   physics: const ClampingScrollPhysics(),
+    //   separatorBuilder: (BuildContext context, int index) {
+    //     return const SizedBox(
+    //       width: 10,
+    //     );
+    //   },
+    // );
     return Align(
       alignment: Alignment.center,
       child: SingleChildScrollView(
@@ -82,4 +113,4 @@ class OptionsWidget extends StatelessWidget {
           )),
     );
   }
-}
+} 

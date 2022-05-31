@@ -29,7 +29,8 @@ class IndustryImplementation extends IndustryService {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
-      log(e.toString());
+      log("erorr "+e.toString());
+      log(const MainFailure.clientFailure().toString());
       return const Left(MainFailure.clientFailure());
     }
   }

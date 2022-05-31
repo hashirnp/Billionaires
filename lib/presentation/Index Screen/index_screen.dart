@@ -78,21 +78,23 @@ class _IndexScreenState extends State<IndexScreen> {
           child: Stack(children: [
             Align(
               alignment: Alignment.topCenter,
-              child: ValueListenableBuilder(
-                  valueListenable: indexNotifier,
-                  builder: (context, int i, _) {
-                    if (i == 1) {
-                      BlocProvider.of<FilterBloc>(context).add(
-                          const FilterEvent.filterQuery(
-                              filterQuery: "youngest"));
-                    }
-                    if (i == 2) {
-                      BlocProvider.of<IndustryBloc>(context).add(
-                          const IndustryEvent.initialEvent(
-                              indsutryQuery: 'technology'));
-                    }
-                    return pages[i];
-                  }),
+              child: Expanded(
+                child: ValueListenableBuilder(
+                    valueListenable: indexNotifier,
+                    builder: (context, int i, _) {
+                      if (i == 1) {
+                        BlocProvider.of<FilterBloc>(context).add(
+                            const FilterEvent.filterQuery(
+                                filterQuery: "youngest"));
+                      }
+                      if (i == 2) {
+                        BlocProvider.of<IndustryBloc>(context).add(
+                            const IndustryEvent.initialEvent(
+                                indsutryQuery: 'Automotive'));
+                      }
+                      return pages[i];
+                    }),
+              ),
             ),
             if (_isBannerAdReady)
               Align(

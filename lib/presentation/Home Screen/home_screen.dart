@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     }
                     return Center(
                       child: SpinKitFadingCube(
-                        color: Colors.red,
+                        color: Colors.blue,
                         size: 50.0,
                         controller: AnimationController(
                             vsync: this,

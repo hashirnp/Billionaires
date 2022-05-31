@@ -56,11 +56,15 @@ class ListWidget extends StatelessWidget {
               shrinkWrap: true,
             );
           } else {
-            return const Center(
-              child: SpinKitFadingCube(
-                color: Colors.red,
-                size: 50.0,
-              ),
+            return  Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [ 
+                 SpinKitFadingCube(
+                   color: Colors.blue,
+                   size: 50.0,
+                 ),
+              ],
             );
           }
         });

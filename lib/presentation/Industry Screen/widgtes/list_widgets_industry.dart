@@ -12,8 +12,11 @@ class ListWidgetIndustry extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<IndustryBloc, IndustryState>(builder: (context, state) {
         if (state.isLoading) {
-    return const Center(
-      child: SpinKitFadingCube(color: Colors.red, size: 50),
+    return const SizedBox(
+      height: 150,
+      child:  Center(
+        child: SpinKitFadingCube(color: Colors.blue, size: 50),
+      ),
     );
         }
         if (state.isError) {
@@ -39,4 +42,4 @@ class ListWidgetIndustry extends StatelessWidget {
   }
 }
 
-class IndustryBloc {}
+

@@ -13,12 +13,18 @@ class FilterScreen extends StatefulWidget {
 class _FilterScreenState extends State<FilterScreen> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children:const [
-         Align(alignment: Alignment.center, child: OptionsWidget()),
-         ListWidget(),
-      ],
+    return Expanded(
+      child: SizedBox(
+        height: double.infinity,
+        child: ListView(
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          children:const [
+             Align(alignment: Alignment.center, child: OptionsWidget()),
+             ListWidget(),
+          ],
+        ),
+      ),
     );
     // return ListWidget(); 
   }
