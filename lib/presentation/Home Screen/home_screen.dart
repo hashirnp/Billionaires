@@ -14,6 +14,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  late AnimationController _controller;
+  
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this, // the SingleTickerProviderStateMixin
+      duration: const Duration(milliseconds: 1200),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -81,9 +98,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       child: SpinKitFadingCube(
                         color: Colors.blue,
                         size: 50.0,
-                        controller: AnimationController(
-                            vsync: this,
-                            duration: const Duration(milliseconds: 1200)),
+                        controller: _controller,
                       ),
                     );
                   }),
