@@ -1,4 +1,3 @@
-
 import 'package:company_profit_bloc/main.dart';
 import 'package:company_profit_bloc/presentation/Filter%20Screen/filter_screen.dart';
 import 'package:company_profit_bloc/presentation/Home%20Screen/home_screen.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
+import 'package:upgrader/upgrader.dart';
 
 import '../../application/filter_bloc/filter_bloc.dart';
 import '../../application/indsutry/industry_bloc.dart';
@@ -34,7 +34,8 @@ class _IndexScreenState extends State<IndexScreen> {
   }
 
   @override
-  void initState() {
+  void initState()  {
+
     _bannerAd = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
       request: const AdRequest(),
@@ -71,28 +72,31 @@ class _IndexScreenState extends State<IndexScreen> {
 
     final key = GlobalKey<ScaffoldState>();
     return Scaffold(
-        drawer: const DrawerWidget(),
+        drawer: DrawerWidget(themeChange),
         key: key,
         appBar: appBarWidget(themeChange: themeChange, context: context),
         body: SafeArea(
           child: Stack(children: [
             Align(
               alignment: Alignment.topCenter,
-              child: ValueListenableBuilder(
-                  valueListenable: indexNotifier,
-                  builder: (context, int i, _) {
-                    if (i == 1) {
-                      BlocProvider.of<FilterBloc>(context).add(
-                          const FilterEvent.filterQuery(
-                              filterQuery: "youngest"));
-                    }
-                    if (i == 2) {
-                      BlocProvider.of<IndustryBloc>(context).add(
-                          const IndustryEvent.initialEvent(
-                              indsutryQuery: 'Automotive'));
-                    }
-                    return pages[i];
-                  }),
+              child: UpgradeAlert(
+                upgrader: Upgrader(dialogStyle: UpgradeDialogStyle.cupertino),
+                child: ValueListenableBuilder(
+                    valueListenable: indexNotifier,
+                    builder: (context, int i, _) {
+                      if (i == 1) {
+                        BlocProvider.of<FilterBloc>(context).add(
+                            const FilterEvent.filterQuery(
+                                filterQuery: "youngest"));
+                      }
+                      if (i == 2) {
+                        BlocProvider.of<IndustryBloc>(context).add(
+                            const IndustryEvent.initialEvent(
+                                indsutryQuery: 'Automotive'));
+                      }
+                      return pages[i];
+                    }),
+              ),
             ),
             if (_isBannerAdReady)
               Align(

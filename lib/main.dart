@@ -4,14 +4,15 @@ import 'package:company_profit_bloc/presentation/Index%20Screen/index_screen.dar
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
+import 'package:upgrader/upgrader.dart';
 
 import 'application/indsutry/industry_bloc.dart';
 import 'application/user/user_bloc.dart';
 import 'domain/core/shared_preferences/DarkThemeProvider.dart';
 import 'domain/core/shared_preferences/ThemeData.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 ValueNotifier<int> indexNotifier = ValueNotifier(0);
 
@@ -19,6 +20,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection();
   MobileAds.instance.initialize();
+  await Upgrader.clearSavedSettings(); // REMOVE this for release builds
 
   runApp(const MyApp());
 }
